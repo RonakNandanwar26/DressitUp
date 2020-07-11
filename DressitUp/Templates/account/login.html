@@ -1,0 +1,95 @@
+{% extends 'common.html' %}
+{% block title %}Login{% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- HEADING-BANNER START -->
+<div class="heading-banner-area overlay-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-banner">
+                    <div class="heading-banner-title">
+                        <h2>Login</h2>
+                    </div>
+                    <div class="breadcumbs pb-15">
+                        <ul>
+                            <li><a href="../Home/index.html">Home</a></li>
+                            <li>Login</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADING-BANNER END -->
+<!-- SHOPPING-CART-AREA START -->
+<div class="login-area  pt-80 pb-80">
+    <div class="container">
+        <form id="login_form" class="login" method="POST" action="{% url 'account_login' %}" data-validate-username-url="{% url 'validate_username_login' %}"> {% csrf_token %}
+            <div class="customer-login text-left">
+                <h4 class="title-1 title-border text-uppercase mb-30">Login</h4>
+                <input type="text" placeholder="username" name="login">
+                <input type="password" placeholder="Password" name="password">
+                <p><a href="{% url 'account_reset_password' %}" class="text-gray">Forget your password?</a></p>
+                <p class="text-gray">If you are not registered, Please <a href="{% url 'account_signup' %}">Register</a></p>
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <input type="submit" value="login" data-text="login" class="button-one submit-button mt-15">
+            </div>
+        </form>
+    </div>
+</div>
+<!-- SHOPPING-CART-AREA END -->
+<script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/sweetalert.min.js' %}"></script>
+<script>
+    $('#login_form').validate({
+        rules : {
+            login: "required",
+            password: "required",
+        },
+        messages: {
+            login: 'Please enter your email',
+            password: 'Please enter your password',
+        }
+    });
+
+    $("form").submit(function (event) {
+        event.preventDefault();
+        var form = $(this);
+        $.ajax({
+                url: form.attr("data-validate-username-url"),
+                data: form.serialize(),
+                type: 'post',
+                context: form,
+                dataType: 'json',
+                success: function(data) {
+                    if(data.content) {
+                        console.log(data);
+                        if (data.is_taken) {
+                            console.log(data);
+                            if (!data.user) {
+                                swal({'title': 'Invalid Password', 'text': data.error_message, icon: "warning"});
+                            } else {
+                                this.off('submit');
+                                this.submit();
+                            }
+                        } else {
+                            console.log(data);
+                            swal({'title': 'Invalid Details', 'text': data.error_message, icon: "warning"});
+                        }
+                    }
+                else{
+                    console.log(data);
+                    }
+                }
+        });
+    });
+</script>
+
+{% endblock %}

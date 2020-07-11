@@ -1,0 +1,68 @@
+{% extends 'common.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <!-- MY-ACCOUNT-AREA START -->
+    <div class="my-account-area  pt-80 pb-80" style="margin-left: 190px">
+        <div class="container">
+            <div class="my-account">
+                <div class="row">
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel">
+                                <div class="my-account-menu" >
+                                    <a  data-toggle="collapse" data-parent="#accordion" href="#my-info" style="margin-bottom: 15px">
+                                        <center>Add Product</center>
+                                    </a>
+                                    <form id="create_product" method="post" enctype="multipart/form-data" action="{% url 'Home:Products:product_create' %}"> {% csrf_token %}
+                                        {{ product_form|crispy }}
+{#                                        {{ product_form.name|as_crispy_field }}#}
+{#                                        {{ product_form.description|as_crispy_field }}#}
+{#                                        {{ product_form.category|as_crispy_field }}#}
+{#                                        {{ product_form.price|as_crispy_field }}#}
+{#                                        {{ product_form.quantity|as_crispy_field }}#}
+{#                                        {{ product_form.availability|as_crispy_field }}#}
+{#                                        {{ product_form.image1|as_crispy_field }}#}
+{#                                        {{ product_form.image2|as_crispy_field }}#}
+{#                                        {{ product_form.image3|as_crispy_field }}#}
+{#                                        {{ product_form.image4|as_crispy_field }}#}
+{#                                        {{ product_form.features|as_crispy_field }}#}
+                                          <input type="submit" value="Add Product">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MY-ACCOUNT-CART-AREA END -->
+    <script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script>
+        $('#create_product').validate({
+            rules : {
+                name: "required",
+                description: "required",
+                category: "required",
+                price: "required",
+                quantity: "required",
+                availability: "required",
+                image1: "required",
+                features: "required",
+        },
+            messages: {
+                name: 'name is required',
+                description: "Description of product is required",
+                category: "Category of product is required",
+                price: "Price is required",
+                quantity: "Quntity is required",
+                availability: "Product is available or not",
+                image1: "image 1 is required",
+                features: "Features of product is required",
+            }
+        });
+    </script>
+{% endblock %}

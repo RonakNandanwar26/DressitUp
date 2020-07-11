@@ -1,0 +1,23 @@
+{% extends 'common.html' %}
+{% block title %}LogOut{% endblock %}
+{% load static %}
+
+
+{% load i18n %}
+
+{% block content %}
+
+<center>
+<h1 style="margin-top: 150px">Sign Out</h1>
+
+    <p><h4>Are you sure you want to sign out?</h4></p>
+
+<form method="post" action="{% url 'account_logout' %}">{% csrf_token %}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+  {% endif %}
+  <input type="submit" value="LogOut" data-text="logOut" class="button-one submit-button mt-15" style="margin-bottom: 200px">
+</form>
+</center>
+
+{% endblock %}

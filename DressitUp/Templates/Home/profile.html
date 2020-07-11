@@ -1,0 +1,40 @@
+{% extends 'common.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Profile {% endblock %}
+{% load static %}
+<!-- HEADING-BANNER START -->
+{% block content %}
+<div class="heading-banner-area overlay-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-banner">
+                    <div class="heading-banner-title">
+                        <h2>Profile</h2>
+                    </div>
+                    <div class="breadcumbs pb-15">
+                        <ul>
+                            <li><a href="../Home/index.html">DressitUp</a></li>
+                            <li>Profile</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADING-BANNER END -->
+<!-- SHOPPING-CART-AREA START -->
+<div class="login-area  pt-80 pb-80" style="margin-left: 100px">
+    <div class="container">
+        <form id="profile_form" class="login" method="POST"> {% csrf_token %}
+            <div class="customer-login text-left">
+                <h4 class="title-1 title-border text-uppercase mb-30">Profile</h4>
+                {{ user_form|crispy }}
+                {{ profile_form|crispy }}
+                <input type="submit" value="Submit" data-text="Submit" class="button-one submit-button mt-15">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

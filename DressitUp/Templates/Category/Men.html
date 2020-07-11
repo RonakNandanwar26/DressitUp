@@ -1,0 +1,27 @@
+{% extends 'common.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    {% for product in products %}
+
+        <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+            <div class="single-product">
+                <div class="product-img">
+                    <span class="pro-price-2">{{ product.price }}</span>
+                    <a href="{% url 'Home:Products:product_Men'  product.id %}">
+                        <img src="{{ product.image1.url }}" alt="" />
+                    </a>
+                </div>
+                <div class="product-info clearfix text-center">
+                    <div class="fix">
+                        <h4 class="post-title"><a href="#">{{ product.name }}</a></h4>
+                         <a href="{% url 'Home:Products:product_delete' product.id %}"><input type="submit" value="delete" data-text="edit" class="button-one submit-button mt-15"></a>
+                         <a href="{% url 'Home:Products:product_edit' product.id %}"><input type="submit" value="edit" data-text="edit" class="button-one submit-button mt-15"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+<div class="row"></div>
+{% endblock %}

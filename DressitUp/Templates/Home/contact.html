@@ -1,0 +1,70 @@
+{% extends 'common.html' %}
+{% block title %}Contact US{% endblock %}
+{% load static %}
+
+{% block content %}
+<!-- HEADING-BANNER END -->
+			<!-- contact-us-AREA START -->
+			<div class="contact-us-area  pt-80 pb-80">
+				<div class="container">
+					<div class="contact-us customer-login bg-white">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
+								<div class="contact-details">
+									<h4 class="title-1 title-border text-uppercase mb-30">contact details</h4>
+									<ul>
+										<li>
+											<i class="zmdi zmdi-pin"></i>
+											<span>28 Green Tower, Street Name,</span>
+											<span>New York City, USA</span>
+										</li>
+										<li>
+											<i class="zmdi zmdi-phone"></i>
+											<span>+880 1234 123456</span>
+											<span>+880 1234 123456</span>
+										</li>
+										<li>
+											<i class="zmdi zmdi-email"></i>
+											<span>company-email@gmail.com</span>
+											<span>your-email@gmail.com</span>
+										</li>
+									</ul>
+								</div>
+								<div class="send-message mt-200">
+									<form id="contact_form" method="post"> {% csrf_token %}
+										<h4 class="title-1 title-border text-uppercase mb-30">send message</h4>
+										<input type="text" name="name" placeholder="Your name here..." />
+										<input type="email" name="email" placeholder="Your email here..." />
+                                        <input type="text" name="subject" placeholder="Your subject here..." />
+										<textarea class="custom-textarea" name="message" placeholder="Your comment here..."></textarea>
+										<input type="submit" class="button-one submit-button mt-20" value="Send Message">
+									</form>
+								</div>
+							</div>
+							<div class="col-lg-8 col-md-8 col-sm-7 col-xs-12 mt-xs-30">
+                                <div class="map-area" style="margin-left: 70px">
+                                    <iframe width="120%" height="600px" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJa-0148KFXjkRm1yPaMZ3mtE&key=AIzaSyABGbIIqbFYjp9pFJ3IqwDD3Pw_3UQDYmw" allowfullscreen></iframe>
+                                </div>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- ABOUT-US-AREA END -->
+
+<script src="{% static 'js/vendor/jquery.min.js' %}"></script>
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/jquery.toast.js' %}"></script>
+<script>
+    $('#contact_form').validate({
+        rules : {
+            name: "required",
+            email: "required",
+            subject: "required",
+            message: "required",
+        },
+    });
+</script>
+
+{% endblock %}

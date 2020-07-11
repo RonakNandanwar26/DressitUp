@@ -1,0 +1,140 @@
+{% extends 'common.html' %}
+{% load static %}
+{% block content %}
+<!-- HEADING-BANNER START -->
+<div class="heading-banner-area overlay-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-banner">
+                    <div class="heading-banner-title">
+                        <h2>Shop</h2>
+                    </div>
+                    <div class="breadcumbs pb-15">
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li>Shop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADING-BANNER END -->
+<!-- PRODUCT-AREA START -->
+<div class="product-area pt-80 pb-80 product-style-2">
+    <div class="container">
+        <!-- Shop-Content End -->
+        <div class="shop-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-option mb-30 clearfix">
+                        <!-- Categories start -->
+                        <div class="dropdown floatleft">
+                            <button class="option-btn" >
+                                Categories
+                            </button>
+                            <div class="dropdown-menu dropdown-width" >
+                                <!-- Widget-Categories start -->
+                                <aside class="widget widget-categories">
+                                    <div class="widget-title">
+                                        <h4>Categories</h4>
+                                    </div>
+                                </aside>
+                                <!-- Widget-categories end -->
+                            </div>
+                        </div>
+                        <!-- Categories end -->
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <!-- Single-product start -->
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <span class="pro-label new-label">new</span>
+                                    <span class="pro-price-2">$ 56.20</span>
+                                    <a href="singleproduct.html"><img src="img/product/1.jpg" alt="" /></a>
+                                </div>
+                                <div class="product-info clearfix text-center">
+                                    <div class="fix">
+                                        <h4 class="post-title"><a href="#">Cotton Jersey Polo</a></h4>
+                                    </div>
+                                    <div class="fix">
+                                        <span class="pro-rating">
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                        </span>
+                                    </div>
+                                    <div class="product-action clearfix">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist"><i class="zmdi zmdi-favorite-outline"></i></a>
+                                        <a href="#" data-toggle="modal"  data-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single-product end -->
+                        <!-- Single-product start -->
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                            <div class="single-product">
+                                <div class="product-img">
+                                    <span class="pro-label sale-label">Sale</span>
+                                    <span class="pro-price-2">$ 56.20</span>
+                                    <a href="singleproduct.html"><img src="img/product/2.jpg" alt="" /></a>
+                                </div>
+                                <div class="product-info clearfix text-center">
+                                    <div class="fix">
+                                        <h4 class="post-title"><a href="#">Three-Piece Check</a></h4>
+                                    </div>
+                                    <div class="fix">
+                                        <span class="pro-rating">
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                            <a href="#"><i class="zmdi zmdi-star-half"></i></a>
+                                        </span>
+                                    </div>
+                                    <div class="product-action clearfix">
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Wishlist"><i class="zmdi zmdi-favorite-outline"></i></a>
+                                        <a href="#" data-toggle="modal"  data-target="#productModal" title="Quick View"><i class="zmdi zmdi-zoom-in"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="zmdi zmdi-refresh"></i></a>
+                                        <a href="#" data-toggle="tooltip" data-placement="top" title="Add To Cart"><i class="zmdi zmdi-shopping-cart-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Single-product end -->
+                        <!-- Single-product start -->
+                        {% for Product in products %}
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                <div class="single-product">
+                                    <div class="product-img">
+                                        <span class="pro-price-2">$ 56.20</span>
+                                        <a href="singleproduct.html"><img src="img/product/3.jpg" alt="" /></a>
+                                    </div>
+                                    <div class="product-info clearfix text-center">
+                                    <div class="fix">
+                                        <h4 class="post-title"><a href="#">Silk Blend Sweater</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Single-product end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shop-Content End -->
+    </div>
+</div>
+<!-- PRODUCT-AREA END -->
+{% endblock %}
